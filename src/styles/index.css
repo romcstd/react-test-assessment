@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-family-sans: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-family-inter: 'Geist', sans-serif;
+  --breakpoint-xs: 360px; /* 360px */
+  --breakpoint-s: 30rem; /* 480px */
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 80rem; /* 1280px */
+  --breakpoint-2xl: 96rem; /* 1536px */
+  --breakpoint-hd: 120rem; /* 1920px */
+  --breakpoint-2k: 160rem; /* 2560px */
+  --breakpoint-4k: 240rem; /* 3840px */
+
+  --background-color: #f8f8f8;
+  --color-black: #333333;
+  --color-white: #ffffff;
+  --color-gray: #cccccc;
+  --color-primary: #c724b1;
+  --color-secondary: #00a9ce;
+  --background-tag-color: #00205b;
+
+  --border-color: #dddddd;
+  --card-separator-color: #dddddd;
+  --card-border-color: #dddddd;
+  --card-border-left-gradient: linear-gradient(
+    to bottom,
+    #c724b1 0%,
+    #00a9ce 40%
+  );
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Geist', sans-serif;
+    font-optical-sizing: auto;
+    background-color: var(--background-color);
+    color: var(--color-black);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .background-primary {
+    background-color: var(--color-primary);
+  }
+
+  .background-tag {
+    background-color: var(--background-tag-color);
+  }
+
+  .border-color {
+    border-color: var(--border-color);
+  }
+
+  .card-border {
+    position: relative;
+    border: 1px solid var(--card-border-color);
+    border-left: none;
+    border-radius: 12px;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-border::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--card-border-left-gradient);
+    border-radius: 8px 0 0 8px;
+    clip-path: inset(0 0 0 0 round 8px 0 0 8px);
+  }
+
+  .card-seperator {
+    border-color: var(--card-separator-color);
+  }
+
+  /* Swiper customization */
+
+  /* Fade effect for partial slides */
+  .pricing-swiper .swiper-slide:not(.swiper-slide-visible) {
+    opacity: 0.5;
+  }
+
+  /* Navigation buttons */
+  .pricing-swiper .swiper-button-next,
+  .pricing-swiper .swiper-button-prev {
+    display: none !important;
+  }
+
+  /* Pagination dots */
+  .pricing-swiper .swiper-pagination-bullet {
+    background-color: var(--color-primary) !important;
+    opacity: 0.4;
+  }
+
+  .pricing-swiper .swiper-pagination-bullet-active {
+    background-color: var(--color-primary) !important;
+    opacity: 1;
+  }
+}
